@@ -56,35 +56,51 @@ main { max-width: 980px; margin: 0 auto; padding: 28px 16px 56px; }
 
 h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-height: 1.15; }
 
-/* Página inicial */
-.capa {
+/* Troca de idioma */
+.idiomas { margin-left: auto; display: flex; gap: 2px; flex-wrap: wrap; justify-content: flex-end; background: rgba(30, 18, 72, .55); border-radius: 999px; padding: 3px; }
+.idiomas a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: .9rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+}
+.idiomas a:hover { background: rgba(255, 255, 255, .14); color: #fff; }
+.idiomas a[aria-current] { background: var(--amarelo); color: var(--contorno); }
+
+/* Página inicial: estúdio + lista de jogos */
+.hero { padding: 26px 0 8px; max-width: 62ch; }
+.hero h1 { font-size: clamp(2.4rem, 7vw, 3.6rem); margin: 0; color: #fff; }
+.hero p { margin: 10px 0 0; color: var(--apagado); font-size: 1.12rem; }
+.secao { font-size: 1.7rem; color: var(--amarelo); margin: 40px 0 16px; }
+.cards { display: grid; gap: 24px; }
+.card {
+  background: var(--painel);
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 0 0 4px var(--contorno), 0 18px 0 -6px var(--roxo);
+  box-shadow: 0 0 0 3px var(--contorno), 0 12px 0 -4px var(--roxo);
 }
-.jogo {
-  display: grid;
-  grid-template-columns: 96px 1fr;
-  gap: 18px;
-  align-items: start;
-  margin-top: 40px;
-}
-.jogo img.icone { border-radius: 22px; width: 96px; height: 96px; }
-.jogo h1 {
+.card-capa { width: 100%; }
+.card-corpo { padding: 20px 20px 4px; }
+.card-titulo { display: flex; gap: 14px; align-items: center; }
+.card-titulo h3 {
   margin: 0;
-  font-size: clamp(2.2rem, 6vw, 3.4rem);
+  font-size: clamp(1.7rem, 5vw, 2.2rem);
   color: var(--van);
-  -webkit-text-stroke: 2px var(--contorno);
+  -webkit-text-stroke: 1.5px var(--contorno);
   paint-order: stroke fill;
-  text-shadow: 0 4px 0 var(--contorno);
+  text-shadow: 0 3px 0 var(--contorno);
 }
-.jogo p { margin: 8px 0 0; max-width: 60ch; }
+.card-titulo .icone { border-radius: 18px; width: 72px; height: 72px; }
+.genero { margin: 2px 0 0; color: var(--apagado); font-weight: 700; font-size: .95rem; }
+.card-corpo > p { margin: 14px 0 0; max-width: 62ch; }
 .status {
   display: inline-block;
   margin-top: 14px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--painel);
+  background: var(--fundo);
   color: var(--apagado);
   font-weight: 700;
   font-size: .95rem;
@@ -98,14 +114,15 @@ h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-heigh
   background: var(--amarelo);
   vertical-align: 1px;
 }
+.links-jogo { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 10px 22px; font-weight: 700; }
 
 .fotos {
   display: flex;
   gap: 14px;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  margin: 30px -16px 0;
-  padding: 4px 16px 14px;
+  margin: 18px 0 0;
+  padding: 4px 20px 20px;
 }
 .fotos img {
   flex: none;
@@ -119,7 +136,7 @@ h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-heigh
 .sobre { margin-top: 56px; max-width: 62ch; color: var(--apagado); }
 .sobre h2 { color: #fff; font-size: 1.6rem; margin: 0 0 6px; }
 
-footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; }
+footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; display: flex; gap: 18px; flex-wrap: wrap; }
 
 /* Política */
 .politica { max-width: 68ch; }
@@ -140,6 +157,6 @@ footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; }
 .resumo p:last-child { margin-bottom: 0; }
 
 @media (max-width: 520px) {
-  .jogo { grid-template-columns: 1fr; }
-  .jogo img.icone { width: 80px; height: 80px; }
+  .card-titulo .icone { width: 60px; height: 60px; }
+  .idiomas a { padding: 5px 8px; font-size: .82rem; }
 }
