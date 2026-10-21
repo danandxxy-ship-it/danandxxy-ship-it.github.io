@@ -4,6 +4,7 @@
 Para um jogo novo: acrescente um item em JOGOS (textos nos 3 idiomas + regras de privacidade)
 e rode:  python3 ferramentas/gerar_site.py
 """
+import hashlib
 import html
 import os
 
@@ -246,6 +247,12 @@ def rel(frm, to):
     return "../" * depth + to
 
 
+def versao(arquivo):
+    """Número que muda quando o arquivo muda: força o navegador a baixar o estilo novo."""
+    with open(os.path.join(RAIZ, arquivo), "rb") as f:
+        return hashlib.md5(f.read()).hexdigest()[:8]
+
+
 def head(lang, page, title, desc):
     here = PATHS[page][lang]
     alts = "\n".join(f'<link rel="alternate" hreflang="{HTML_LANG[l]}" href="{SITE}/{PATHS[page][l]}">' for l in ("pt", "en", "es"))
@@ -263,7 +270,7 @@ def head(lang, page, title, desc):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{rel(here, 'style.css')}">
+<link rel="stylesheet" href="{rel(here, 'style.css')}?v={versao('style.css')}">
 </head>
 <body>"""
 
@@ -277,7 +284,7 @@ def topo(lang, page):
         links.append(f'<a href="{rel(here, PATHS[page][l]) or "./"}" lang="{HTML_LANG[l]}" data-lang="{l}"{cur}>{LANG_NAME[l]}</a>')
     return f"""<header class="topo">
   <div class="topo-dentro">
-    <a class="marca" href="{home}"><img src="{rel(here, 'img/logo-1k99.png')}" width="120" height="52" alt="1k99"></a>
+    <a class="marca" href="{home}"><img src="{rel(here, 'img/logo-1k99.png')}?v={versao('img/logo-1k99.png')}" width="120" height="52" alt="1k99"></a>
     <nav class="idiomas" aria-label="{UI[lang]['idiomas']}">{''.join(links)}</nav>
   </div>
 </header>"""
