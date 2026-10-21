@@ -131,6 +131,7 @@ footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; }
 .politica h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); margin: 0; color: #fff; }
 .politica .data { color: var(--apagado); margin: 6px 0 0; font-size: .95rem; }
 .politica h2 { color: var(--faixa); font-size: 1.45rem; margin: 40px 0 8px; }
+.politica h3 { color: #fff; font-size: 1.25rem; margin: 22px 0 8px; }
 .politica p, .politica li { margin: 0 0 12px; }
 .politica ul { padding-left: 1.2em; }
 .politica li::marker { color: var(--van); }
