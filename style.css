@@ -5,14 +5,16 @@
 }
 
 :root {
-  --asfalto: #232037;
-  --asfalto-claro: #2e2a48;
-  --faixa: #ffd23f;
+  --fundo: #1e1248;
+  --painel: #2c1a6e;
+  --roxo: #6c4cff;
+  --roxo-escuro: #3a24a8;
+  --amarelo: #ffd23f;
+  --rosa: #ff78aa;
   --van: #ff8a1f;
-  --ceu: #6c63ff;
-  --texto: #f6f4fc;
-  --apagado: #b9b0d9;
-  --contorno: #1a1730;
+  --texto: #f7f5ff;
+  --apagado: #c3b8f0;
+  --contorno: #1e1248;
 }
 
 * { box-sizing: border-box; }
@@ -21,41 +23,34 @@ html { -webkit-text-size-adjust: 100%; }
 
 body {
   margin: 0;
-  background: var(--asfalto);
+  background: var(--fundo);
   color: var(--texto);
   font: 400 1.0625rem/1.65 "Nunito", system-ui, sans-serif;
 }
 
-a { color: var(--faixa); text-underline-offset: 3px; }
+a { color: var(--amarelo); text-underline-offset: 3px; }
 a:hover { color: #fff; }
-a:focus-visible { outline: 3px solid var(--faixa); outline-offset: 3px; border-radius: 4px; }
+a:focus-visible { outline: 3px solid var(--amarelo); outline-offset: 3px; border-radius: 4px; }
 
 img { display: block; max-width: 100%; height: auto; }
 
-/* Rua no topo: a faixa amarela tracejada é o fio que liga as páginas */
-.rua {
-  background: var(--asfalto-claro);
-  border-bottom: 6px dashed var(--faixa);
-  border-image: repeating-linear-gradient(90deg, var(--faixa) 0 46px, transparent 46px 78px) 6;
+/* Topo com as cores da marca 1k99: roxo, confetes e o logo */
+.topo {
+  background-color: var(--roxo-escuro);
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%22240%22%20height%3D%22120%22%20viewBox%3D%220%200%20240%20120%22%3E%3Cg%20fill%3D%22none%22%20stroke-width%3D%225%22%3E%3Ccircle%20cx%3D%2230%22%20cy%3D%2228%22%20r%3D%229%22%20stroke%3D%22%23ffd23f%22%20stroke-opacity%3D%22.55%22/%3E%3Ccircle%20cx%3D%22196%22%20cy%3D%2286%22%20r%3D%227%22%20stroke%3D%22%23ff78aa%22%20stroke-opacity%3D%22.6%22/%3E%3C/g%3E%3Cpath%20d%3D%22M120%2014l12%2020h-24z%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%22.22%22/%3E%3Cpath%20d%3D%22M70%2082l9%209-9%209-9-9z%22%20fill%3D%22%23ffd23f%22%20fill-opacity%3D%22.45%22/%3E%3Cpath%20d%3D%22M214%2018l8%2014h-16z%22%20fill%3D%22%23ff78aa%22%20fill-opacity%3D%22.45%22/%3E%3Crect%20x%3D%22150%22%20y%3D%2250%22%20width%3D%2210%22%20height%3D%2210%22%20transform%3D%22rotate%2820%20155%2055%29%22%20fill%3D%22%23ffffff%22%20fill-opacity%3D%22.25%22/%3E%3C/svg%3E"), linear-gradient(120deg, var(--roxo), var(--roxo-escuro));
+  border-bottom: 5px solid var(--contorno);
 }
-.rua-dentro {
+.topo-dentro {
   max-width: 980px;
   margin: 0 auto;
-  padding: 14px 16px;
+  padding: 12px 16px;
   display: flex;
   align-items: center;
   gap: 12px;
 }
-.marca {
-  font-family: "Lilita One", sans-serif;
-  font-size: 1.9rem;
-  line-height: 1;
-  color: #fff;
-  text-decoration: none;
-  letter-spacing: .5px;
-}
-.marca b { color: var(--faixa); font-weight: 400; }
-.rua-dentro a.voltar { margin-left: auto; font-weight: 700; font-size: .95rem; }
+.marca { display: block; line-height: 0; }
+.marca img { height: 52px; width: auto; }
+.topo-dentro a.voltar { margin-left: auto; font-weight: 700; font-size: .95rem; color: #fff; }
 
 main { max-width: 980px; margin: 0 auto; padding: 28px 16px 56px; }
 
@@ -65,7 +60,7 @@ h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-heigh
 .capa {
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 0 0 4px var(--contorno), 0 18px 0 -6px var(--ceu);
+  box-shadow: 0 0 0 4px var(--contorno), 0 18px 0 -6px var(--roxo);
 }
 .jogo {
   display: grid;
@@ -89,7 +84,7 @@ h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-heigh
   margin-top: 14px;
   padding: 6px 14px;
   border-radius: 999px;
-  background: var(--asfalto-claro);
+  background: var(--painel);
   color: var(--apagado);
   font-weight: 700;
   font-size: .95rem;
@@ -100,7 +95,7 @@ h1, h2, h3 { font-family: "Lilita One", sans-serif; font-weight: 400; line-heigh
   width: 10px; height: 10px;
   margin-right: 8px;
   border-radius: 50%;
-  background: var(--faixa);
+  background: var(--amarelo);
   vertical-align: 1px;
 }
 
@@ -130,7 +125,7 @@ footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; }
 .politica { max-width: 68ch; }
 .politica h1 { font-size: clamp(2rem, 5.5vw, 2.8rem); margin: 0; color: #fff; }
 .politica .data { color: var(--apagado); margin: 6px 0 0; font-size: .95rem; }
-.politica h2 { color: var(--faixa); font-size: 1.45rem; margin: 40px 0 8px; }
+.politica h2 { color: var(--amarelo); font-size: 1.45rem; margin: 40px 0 8px; }
 .politica h3 { color: #fff; font-size: 1.25rem; margin: 22px 0 8px; }
 .politica p, .politica li { margin: 0 0 12px; }
 .politica ul { padding-left: 1.2em; }
@@ -139,7 +134,7 @@ footer { margin-top: 56px; color: var(--apagado); font-size: .9rem; }
   margin-top: 26px;
   padding: 18px 20px;
   border-radius: 16px;
-  background: var(--asfalto-claro);
+  background: var(--painel);
   border-left: 6px solid var(--van);
 }
 .resumo p:last-child { margin-bottom: 0; }
